@@ -1,39 +1,44 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:latlong2/latlong.dart';
 
-final List<Map<String, dynamic>> studios = [
-  {
-    'name': 'Oriental Dance Studio',
-    'address': 'Hermannin rantatie 2b, Helsinki',
-    'latLng': LatLng(60.1888852, 24.9776478),
-    'description': 'Offering Oriental dance classes in Helsinki.',
-    'style': 'oriental'
-  },
-  {
-    'name': 'Tampere Social Dancing',
-    'address': 'Vellamonkatu 4, Tampere',
-    'latLng': LatLng(61.500219, 23.6480771),
-    'description': 'A vibrant place to learn social dancing.',
-    'style': 'classic'
-  },
-  {
-    'name': 'Turku Dance Hub',
-    'address': 'Aurakatu 10, Turku',
-    'latLng': LatLng(60.451813, 22.266630),
-    'description': 'Experience the best of contemporary and urban dance styles in Turku.',
-    'style': 'modern'
-  },
-  {
-    'name': 'Espoo Ballet Academy',
-    'address': 'Espoon keskus 5, Espoo',
-    'latLng': LatLng(60.205490, 24.655899),
-    'description': 'Dedicated to teaching classical ballet in a professional environment.',
-    'style': 'ballet'
-  },
-  {
-    'name': 'Jyväskylä Salsa Studio',
-    'address': 'Kauppakatu 20, Jyväskylä',
-    'latLng': LatLng(62.241470, 25.720880),
-    'description': 'A friendly studio in Jyväskylä specializing in salsa and Latin dances.',
-    'style':'salsa'
-  },
-];
+class Studio {
+  final String name;
+  final String address;
+  final LatLng latLng;
+  final String description;
+  final String style;
+
+  Studio({
+    required this.name,
+    required this.address,
+    required this.latLng,
+    required this.description,
+    required this.style,
+  });
+
+  factory Studio.fromFirestore(DocumentSnapshot doc) {
+  final data = doc.data() as Map<String, dynamic>;
+  final geoPoint = data['latLng'] as GeoPoint; // Récupération du GeoPoint
+  return Studio(
+    name: data['name'],
+    address: data['address'],
+    latLng: LatLng(geoPoint.latitude, geoPoint.longitude), // Utilisation des propriétés GeoPoint
+    description: data['description'],
+    style: data['style'],
+  );
+}
+}
+
+class StudioData {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<Studio>> fetchStudios() async {
+    try {
+      final querySnapshot = await _firestore.collection('studios').get();
+      return querySnapshot.docs.map((doc) => Studio.fromFirestore(doc)).toList();
+    } catch (e) {
+      print('Error fetching studios: $e');
+      rethrow;
+    }
+  }
+}

@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:976047695991:android:499907e6175342e4e87e72",
+        "mobilesdk_app_id": "1:976047695991:android:f2cc2ee79841cb21e87e72",
         "android_client_info": {
-          "package_name": "com.mimiqit"
+          "package_name": "com.example.mimiqit"
         }
       },
       "oauth_client": [],

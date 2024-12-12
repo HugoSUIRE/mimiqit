@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mimiqit/screens/map_page.dart';
 import 'package:mimiqit/screens/studio_list_page.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Initialisez Firebase
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
