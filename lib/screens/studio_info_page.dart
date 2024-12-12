@@ -16,22 +16,7 @@ class StudioInfoPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // En-tête avec le nom du studio (design de la branche design)
-          Container(
-            color: Colors.blue,
-            width: double.infinity,
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              studio.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
           const SizedBox(height: 16),
-
           // Informations générales (fonctionnalités de la branche main)
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -42,7 +27,8 @@ class StudioInfoPage extends StatelessWidget {
                 Card(
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   child: ListTile(
-                    leading: const Icon(Icons.location_on, color: Colors.redAccent),
+                    leading:
+                        const Icon(Icons.location_on, color: Colors.redAccent),
                     title: Text(studio.address),
                   ),
                 ),
@@ -58,9 +44,13 @@ class StudioInfoPage extends StatelessWidget {
                 ),
                 // Description (fonctionnalité main)
                 const SizedBox(height: 10),
-                Text(
-                  studio.description,
-                  style: const TextStyle(fontSize: 16),
+                Center(
+                  child: Text(
+                    studio.description,
+                    style: const TextStyle(fontSize: 16),
+                    textAlign: TextAlign
+                        .center, // Assure que le texte est centré horizontalement
+                  ),
                 ),
               ],
             ),
@@ -73,14 +63,16 @@ class StudioInfoPage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MapPage(centerPosition: studio.latLng),
+                    builder: (context) =>
+                        MapPage(centerPosition: studio.latLng),
                   ),
                 );
               },
               icon: const Icon(Icons.map),
               label: const Text('View on Map'),
               style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
               ),
             ),
           ),
