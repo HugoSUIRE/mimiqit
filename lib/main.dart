@@ -1,8 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:mimiqit/screens/map_page.dart';      // Importez votre page de carte
 import 'package:mimiqit/screens/studio_list_page.dart'; // Importez votre page de liste des studios
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Initialisez Firebase
   runApp(MyApp());
 }
 
