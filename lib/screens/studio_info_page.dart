@@ -20,7 +20,7 @@ class StudioInfoPage extends StatelessWidget {
         children: [
           // En-tête avec le nom du studio
           Container(
-            color: Colors.blueAccent,
+            color: Colors.blue,
             width: double.infinity,
             padding: const EdgeInsets.all(16),
             child: Text(

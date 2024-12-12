@@ -15,36 +15,20 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Mimiqit Dance Studio',
       theme: ThemeData(
-        primaryColor: const Color(0xFFE91E63), // Rose magenta
-        scaffoldBackgroundColor: const Color(0xFFF8BBD0), // Rose clair
+        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF9C27B0), // Violet
-          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.black87), // Nouveau nom pour bodyText1
-          bodyMedium: TextStyle(color: Colors.black54), // Nouveau nom pour bodyText2
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Color(0xFF00BCD4), // Cyan
-          unselectedItemColor: Colors.grey,
+          backgroundColor: Colors.blue,
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        primaryColor: const Color(0xFFE91E63), // Rose magenta
-        scaffoldBackgroundColor: const Color(0xFF121212), // Noir profond
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.black,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF9C27B0), // Violet
-          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-        ),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.white), // Nouveau nom pour bodyText1
-          bodyMedium: TextStyle(color: Colors.grey), // Nouveau nom pour bodyText2
-        ),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          selectedItemColor: Color(0xFF00BCD4), // Cyan
-          unselectedItemColor: Colors.grey,
+          backgroundColor: Colors.deepPurple,
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
       ),
       themeMode: ThemeMode.system,
