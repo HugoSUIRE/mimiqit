@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976047695991",
+    "project_id": "mimiqit",
+    "storage_bucket": "mimiqit.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976047695991:android:f2cc2ee79841cb21e87e72",
+        "android_client_info": {
+          "package_name": "com.example.mimiqit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDymaa8TROfdD5g-Gwdf7dd-W3FauyVuWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
