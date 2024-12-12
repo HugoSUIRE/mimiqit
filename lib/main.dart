@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mimiqit/screens/map_page.dart';      // Importez votre page de carte
-import 'package:mimiqit/screens/studio_list_page.dart'; // Importez votre page de liste des studios
+import 'package:mimiqit/screens/map_page.dart';
+import 'package:mimiqit/screens/studio_list_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,11 +16,26 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Dance Studio App',
+      title: 'Mimiqit Dance Studio',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blue,
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
       ),
-      home: HomePage(), // Page d'accueil par défaut
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.black,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.deepPurple,
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ),
+      themeMode: ThemeMode.system,
+      home: const HomePage(),
     );
   }
 }
@@ -29,7 +44,6 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -37,8 +51,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    StudioListPage(), // Votre page de liste des studios
-    MapPage(),        // Votre page de carte
+    const StudioListPage(),
+    const MapPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -50,8 +64,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dance Studio Discovery')),
-      body: _pages[_selectedIndex], // Affiche la page sélectionnée
+      appBar: AppBar(title: const Text('Mimiqit Dance Studio')),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
