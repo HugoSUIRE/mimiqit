@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mimiqit/screens/map_page.dart';      // Importez votre page de carte
-import 'package:mimiqit/screens/studio_list_page.dart'; // Importez votre page de liste des studios
+import 'package:mimiqit/screens/map_page.dart';
+import 'package:mimiqit/screens/studio_list_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,11 +13,42 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Dance Studio App',
+      title: 'Mimiqit Dance Studio',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: const Color(0xFFE91E63), // Rose magenta
+        scaffoldBackgroundColor: const Color(0xFFF8BBD0), // Rose clair
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF9C27B0), // Violet
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.black87), // Nouveau nom pour bodyText1
+          bodyMedium: TextStyle(color: Colors.black54), // Nouveau nom pour bodyText2
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Color(0xFF00BCD4), // Cyan
+          unselectedItemColor: Colors.grey,
+        ),
       ),
-      home: HomePage(), // Page d'accueil par défaut
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: const Color(0xFFE91E63), // Rose magenta
+        scaffoldBackgroundColor: const Color(0xFF121212), // Noir profond
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF9C27B0), // Violet
+          titleTextStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white), // Nouveau nom pour bodyText1
+          bodyMedium: TextStyle(color: Colors.grey), // Nouveau nom pour bodyText2
+        ),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          selectedItemColor: Color(0xFF00BCD4), // Cyan
+          unselectedItemColor: Colors.grey,
+        ),
+      ),
+      themeMode: ThemeMode.system,
+      home: const HomePage(),
     );
   }
 }
@@ -26,7 +57,6 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomePageState createState() => _HomePageState();
 }
 
@@ -34,8 +64,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    StudioListPage(), // Votre page de liste des studios
-    MapPage(),        // Votre page de carte
+    const StudioListPage(),
+    const MapPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -47,8 +77,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Dance Studio Discovery')),
-      body: _pages[_selectedIndex], // Affiche la page sélectionnée
+      appBar: AppBar(title: const Text('Mimiqit Dance Studio')),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
